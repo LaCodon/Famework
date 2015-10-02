@@ -5,8 +5,6 @@ language: php
 php:
   # using major version aliases
 
-  # aliased to 5.2.17
-  - 5.2
   # aliased to 5.3.29
   - 5.3
   # aliased to a recent 5.4.x version
@@ -20,8 +18,4 @@ php:
   # aliased to a recent hhvm version
   - hhvm
 
-before-install: 
-  - php /home/travis/.phpenv/versions/5.6/bin/composer self-update
-before-script:
-  - composer install
 script: phpunit Famework.php
