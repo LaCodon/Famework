@@ -19,7 +19,10 @@ class Famework_Registry {
      * @return int 1: DEVELOPMENT; 2: PRODUCTION
      */
     public static function getEnv() {
-        return $GLOBALS['\famework_env'];
+        if (isset($GLOBALS['\famework_env'])) {
+            return $GLOBALS['\famework_env'];
+        }
+        return NULL;
     }
 
     /**
@@ -50,7 +53,11 @@ class Famework_Registry {
      * @return Famework_View
      */
     public static function getView() {
-        return $GLOBALS['\famework_view'];
+        if (isset($GLOBALS['\famework_view'])) {
+            return $GLOBALS['\famework_view'];
+        }
+
+        return NULL;
     }
 
     /**
@@ -73,9 +80,13 @@ class Famework_Registry {
      * @return -/-
      * @throws Famework_Exception_Registry_Error
      */
-    public static function get($name) {
+    public static function get($name, $strict = TRUE) {
         if (!isset($GLOBALS[$name])) {
-            throw new Famework_Exception_Registry_Error('Missing entry with key "' . $name . '"');
+            if ($strict) {
+                throw new Famework_Exception_Registry_Error('Missing entry with key "' . $name . '"');
+            } else {
+                return NULL;
+            }
         }
 
         return $GLOBALS[$name];
