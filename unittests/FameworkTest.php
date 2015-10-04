@@ -30,8 +30,11 @@ class FameworkTest extends PHPUnit_Framework_TestCase {
      * @runInSeparateProcess
      */
     public function testHandle() {
+        ob_start();
         $this->_famework->handleRequest();
         $this->_famework->loadController();
+        // ignore output
+        ob_get_clean();
     }
 
 }
