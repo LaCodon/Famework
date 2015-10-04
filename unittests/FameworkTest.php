@@ -26,6 +26,9 @@ class FameworkTest extends PHPUnit_Framework_TestCase {
         $this->_famework = new Famework($this->_config, $this->_routes);
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function testHandle() {
         $this->_famework->handleRequest();
         $this->_famework->loadController();
