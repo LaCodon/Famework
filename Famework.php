@@ -187,7 +187,7 @@ class Famework {
      * Call this to load the controller, action and view.
      * Call Famework::handleRequest() <b>before</b>!
      */
-    public function loadController() {
+    public function loadController($nooutput = FALSE) {
         if ($this->_controller === NULL || $this->_action === NULL) {
             $this->_controller = 'IndexController';
             $this->_action = 'notfoundAction';
@@ -195,7 +195,7 @@ class Famework {
         }
 
         // we need the default 404 error page, because developer provides none
-        if (!class_exists($this->_controller, TRUE) || get_parent_class($this->_controller) !== 'Famework\Controller\Famework_Controller') {
+        if ((!class_exists($this->_controller, TRUE) || get_parent_class($this->_controller) !== 'Famework\Controller\Famework_Controller') && $nooutput === FALSE) {
             $this->default404();
         }
 
@@ -220,7 +220,9 @@ class Famework {
         $ctrlClass->$action();
 
         // render view
-        $pageview->render($this->_view_path);
+        if ($nooutput === FALSE) {
+            $pageview->render($this->_view_path);
+        }
     }
 
     private function default404() {
