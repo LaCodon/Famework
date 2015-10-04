@@ -20,21 +20,12 @@ class FameworkTest extends PHPUnit_Framework_TestCase {
      */
     private $_famework;
 
-    public function testConfig() {
+    protected function setUp() {
         $this->_config = new Famework_Config('');
         $this->_routes = new Famework_Config('');
-    }
-
-    /**
-     * @depends testConfig
-     */
-    public function testConstruct() {
         $this->_famework = new Famework($this->_config, $this->_routes);
     }
 
-    /**
-     * @depends testConstruct
-     */
     public function testHandle() {
         $this->_famework->handleRequest();
         $this->_famework->loadController();
