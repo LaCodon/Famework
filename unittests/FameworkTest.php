@@ -33,8 +33,7 @@ class FameworkTest extends PHPUnit_Framework_TestCase {
      * @dataProvider pathProvider
      */
     public function testHandle($path, $contExp, $actExp) {
-        $_SERVER['REQUEST_URI'] = $path;
-        $this->_famework->handleRequest();
+        $this->_famework->handleRequest($path);
         $this->assertEquals($contExp, $this->_famework->getController());
         $this->assertEquals($actExp, $this->_famework->getAction());
     }
@@ -47,7 +46,7 @@ class FameworkTest extends PHPUnit_Framework_TestCase {
             array('/test/test.do/', 'TestController', 'testDoAction'),
             array('/test/test/addfolder', NULL, NULL),
             array('/test/', 'TestController', NULL),
-            array('/test', 'TestController', NULL),
+            array('/test', 'TestController', NULL)
         );
     }
     

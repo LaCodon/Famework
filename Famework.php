@@ -97,10 +97,14 @@ class Famework {
      * Call this to handle a request.
      * Then call Famework::loadController();
      */
-    public function handleRequest() {
+    public function handleRequest($path = NULL) {
         $result = array();
 
-        $requestUri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
+        if ($path === NULL) {
+            $requestUri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
+        } else {
+            $requestUri = $path;
+        }
 
         $routes = $this->_routes->getByKey('famework_route');
 
@@ -220,11 +224,11 @@ class Famework {
         $ctrlClass->$action();
 
         // render view
-            $pageview->render($this->_view_path);
+        $pageview->render($this->_view_path);
     }
 
     private function default404($nooutput) {
-        if($nooutput === TRUE) {
+        if ($nooutput === TRUE) {
             exit();
         }
         echo '<!DOCTYPE html>
@@ -259,11 +263,11 @@ class Famework {
 
         return NULL;
     }
-    
+
     public function getController() {
         return $this->_controller;
     }
-    
+
     public function getAction() {
         return $this->_action;
     }
