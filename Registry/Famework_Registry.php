@@ -3,6 +3,8 @@
 namespace Famework\Registry;
 
 use Famework\View\Famework_View;
+use Famework\Registry\Famework_Exception_Registry_Error;
+use Famework\Db\Famework_Exception_Database_Fail;
 
 class Famework_Registry {
 
