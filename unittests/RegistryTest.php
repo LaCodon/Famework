@@ -9,6 +9,9 @@ class RegistryTest extends PHPUnit_Framework_TestCase {
     public function setUp() {
         Famework_Registry::set('foo', 'bar');
         Famework_Registry::setEnv('Test');
+        // call errors once to autoload them, maybe PHPUnit bug
+        (new Famework_Exception_Registry_Error(NULL, NULL));
+        (new Famework_Exception_Database_Fail(NULL, NULL));
     }
 
     public function testGet() {
