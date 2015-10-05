@@ -10,7 +10,9 @@ use Famework\Config\Famework_Config;
 use Famework\Db\Famework_Database;
 use Famework\View\Famework_View;
 
-define('FAMEWORK_ROOT', dirname(__FILE__));
+if (!defined('FAMEWORK_ROOT')) {
+    define('FAMEWORK_ROOT', dirname(__FILE__));
+}
 
 class Famework {
 

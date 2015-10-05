@@ -1,6 +1,8 @@
 <?php
 
 use Famework\Registry\Famework_Registry;
+use Famework\Registry\Famework_Exception_Registry_Error;
+use Famework\Db\Famework_Exception_Database_Fail;
 
 class RegistryTest extends PHPUnit_Framework_TestCase {
 
