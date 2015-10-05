@@ -45,11 +45,11 @@ famework_action = :action
         return array(
             array('/test/test', 'TestController', 'testAction'),
             array('/test/test/', 'TestController', 'testAction'),
-            array('/test/test.do', 'TestController', 'testDoAction'),
-            array('/test/test.do/', 'TestController', 'testDoAction'),
-            array('/test/test/addfolder', NULL, NULL),
-            array('/test/', 'TestController', NULL),
-            array('/test', 'TestController', NULL)
+            array('/test/test.do', 'TestController', 'testdoAction'),
+            array('/test/test.do/', 'TestController', 'testdoAction'),
+            array('/test/test/addfolder', 'TestController', NULL),
+            array('/test/', NULL, NULL),
+            array('/test', NULL, NULL)
         );
     }
     
