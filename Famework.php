@@ -159,8 +159,14 @@ class Famework {
         }
 
         if (isset($result['controller']) && isset($result['action'])) {
-            $this->setController($result['controller']);
-            $this->setAction($result['action']);
+            if (strpos($result['controller'], '/') !== FALSE || strpos($result['action'], '/') !== FALSE) {
+                // something went wrong because controller or action is URI fragment
+                unset($result['controller']);
+                unset($result['action']);
+            } else {
+                $this->setController($result['controller']);
+                $this->setAction($result['action']);
+            }
         }
 
         $this->_request = new Famework_Request($this->_params);
