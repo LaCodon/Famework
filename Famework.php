@@ -259,6 +259,14 @@ class Famework {
 
         return NULL;
     }
+    
+    public function getController() {
+        return $this->_controller;
+    }
+    
+    public function getAction() {
+        return $this->_action;
+    }
 
 }
 

@@ -38,6 +38,10 @@ class Famework_Registry {
      * @return \PDO
      */
     public static function getDb() {
+        if(!isset($GLOBALS['\famework_db'])) {
+            $GLOBALS['\famework_db'] = NULL;
+        }
+        
         if ($GLOBALS['\famework_db'] === NULL) {
             throw new Famework_Exception_Database_Fail('FATAL ERROR! Database not well configured!');
         }
@@ -77,7 +81,8 @@ class Famework_Registry {
     /**
      * Get a registry entry
      * @param string $name The identifier
-     * @return -/-
+     * @param bool $strict Whether to throw an exception if name is not used
+     * @return -/- The value
      * @throws Famework_Exception_Registry_Error
      */
     public static function get($name, $strict = TRUE) {

@@ -22,16 +22,41 @@ class FameworkTest extends PHPUnit_Framework_TestCase {
 
     protected function setUp() {
         $this->_config = new Famework_Config('');
-        $this->_routes = new Famework_Config('');
+        $this->_routes = new Famework_Config('[default]'
+                . 'famework_route = {root}/:controller/:action'
+                . 'famework_controller = :controller'
+                . 'famework_action = :action');
         $this->_famework = new Famework($this->_config, $this->_routes);
     }
 
     /**
+     * @dataProvider pathProvider
+     */
+    public function testHandle($path, $contExp, $actExp) {
+        $_SERVER['REQUEST_URI'] = $path;
+        $this->_famework->handleRequest();
+        $this->assertEquals($contExp, $this->_famework->getController());
+        $this->assertEquals($actExp, $this->_famework->getAction());
+    }
+    
+    public function pathProvider() {
+        return array(
+            array('/test/test', 'TestController', 'testAction'),
+            array('/test/test/', 'TestController', 'testAction'),
+            array('/test/test.do', 'TestController', 'testDoAction'),
+            array('/test/test.do/', 'TestController', 'testDoAction'),
+            array('/test/test/addfolder', NULL, NULL),
+            array('/test/', 'TestController', NULL),
+            array('/test', 'TestController', NULL),
+        );
+    }
+    
+    /**
+     * Because of header:
      * @runInSeparateProcess
      */
-    public function testHandle() {
-        $this->_famework->handleRequest();
-        $this->_famework->loadController(TRUE); // no output
+    public function testLoad() {
+         $this->_famework->loadController(TRUE); // no output
     }
 
 }
