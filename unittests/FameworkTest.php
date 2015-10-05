@@ -23,11 +23,12 @@ class FameworkTest extends PHPUnit_Framework_TestCase {
     protected function setUp() {
         $this->_config = new Famework_Config('');
         $this->_routes = new Famework_Config('
-                [default]
-                famework_route = {root}/:controller/:action
-                famework_controller = :controller
-                famework_action = :action
-                ');
+[default]
+famework_route = {root}/:controller/:action
+famework_controller = :controller
+famework_action = :action
+
+');
         $this->_famework = new Famework($this->_config, $this->_routes);
     }
 
