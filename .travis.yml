@@ -18,4 +18,4 @@ php:
   # aliased to a recent hhvm version
   - hhvm
 
-script: phpunit --bootstrap loader.php ./unittests/FameworkTest
+script: phpunit --bootstrap loader.php ./unittests/
