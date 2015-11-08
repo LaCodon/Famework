@@ -22,6 +22,7 @@ class Famework_Database {
      * Convert SQL result into an object
      * @param array $fetchAll Result of $stm->fetchAll()
      * @param string $class The class type of the created object
+     * @return array Array of Objects or object if single result
      */
     public static function getAsObject($fetchAll, $class = '\stdClass') {
         $result = array();
