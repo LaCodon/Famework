@@ -207,7 +207,7 @@ class Famework {
         }
 
         // we need the default 404 error page, because developer provides none
-        if (!class_exists($this->_controller, TRUE) || get_parent_class($this->_controller) !== 'Famework\Controller\Famework_Controller') {
+        if (!class_exists($this->_controller, TRUE) || !in_array('Famework\Controller\Famework_Controller', class_parents($this->_controller))) {
             $this->default404($nooutput);
         }
 
