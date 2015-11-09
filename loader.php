@@ -19,7 +19,7 @@ spl_autoload_register(function ($class) {
     // Check under the current directory.
     $path = dirname(__FILE__) . '/' . $class . '.php';
     if (is_readable($path)) {
-        require_once $path;
+        require $path;
         return;
     }
     /* Now, we have to search the class in the Mod_* folders.
@@ -30,7 +30,7 @@ spl_autoload_register(function ($class) {
     if (count($parts) >= 2) {
         $modpath = dirname(__FILE__) . '/Mods/' . $parts[0] . '_' . $parts[1] . str_replace($parts[0] . '/' . $parts [1], '', $class) . '.php';
         if (is_readable($modpath)) {
-            require_once $modpath;
+            require $modpath;
             return;
         }
     }

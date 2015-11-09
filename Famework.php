@@ -224,7 +224,7 @@ class Famework {
         $ctrlClass->init();
 
         if (!method_exists($ctrlClass, $this->_action)) {
-            $this->default404();
+            $this->default404($nooutput);
         }
 
         // run action

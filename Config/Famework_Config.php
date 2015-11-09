@@ -24,9 +24,7 @@ class Famework_Config {
         if (is_readable($config)) {
             // file
             $data = parse_ini_file($config, TRUE);
-        }
-
-        if (is_string($config)) {
+        } elseif (is_string($config)) {
             // string
             $data = parse_ini_string($config, TRUE);
         }
