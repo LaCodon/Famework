@@ -16,6 +16,11 @@ class Famework_View {
     protected $_controller;
     protected $_action;
 
+    /**
+     * @var \Famework\View\Famework_View_Frame_Controller 
+     */
+    protected $_framecontroller;
+
     public function __construct(Famework_Request $request = NULL) {
         $this->__frame = new Famework_View_Frame();
         $this->_request = $request;
@@ -35,7 +40,13 @@ class Famework_View {
 
                 $this->__frame->theDoctype();
                 $this->__frame->theHeader();
+                if ($this->_framecontroller !== NULL) {
+                    $this->_framecontroller->renderTop();
+                }
                 require $path;
+                if ($this->_framecontroller !== NULL) {
+                    $this->_framecontroller->renderBottom();
+                }
                 $this->__frame->theFooter();
             } else {
                 require $path;
@@ -119,6 +130,15 @@ class Famework_View {
 
     public function setAction($action) {
         $this->_action = $action;
+    }
+
+    /**
+     * Use this function if you want to generalise some
+     * parts inside the <body> tag of your HTML
+     * @param \Famework\View\Famework_View_Frame_Controller $object
+     */
+    public function setFrameController($object) {
+        $this->_framecontroller = $object;
     }
 
 }
