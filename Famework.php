@@ -221,7 +221,6 @@ class Famework {
 
         // get controller
         $ctrlClass = new $this->_controller($pageview);
-        $ctrlClass->init();
 
         if (!method_exists($ctrlClass, $this->_action)) {
             $this->default404($nooutput);

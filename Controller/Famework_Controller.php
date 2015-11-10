@@ -13,6 +13,7 @@ abstract class Famework_Controller {
 
     public function __construct($view) {
         $this->_view = $view;
+        $this->init();
     }
 
 }
