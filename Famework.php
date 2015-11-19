@@ -108,6 +108,12 @@ class Famework {
             $requestUri = $path;
         }
 
+        // remove GET params
+        $pos = strpos($requestUri, '?');
+        if ($pos !== FALSE) {
+            $requestUri = substr($requestUri, 0, $pos);
+        }
+
         $routes = $this->_routes->getByKey('famework_route');
 
         foreach ($routes as $route) {
