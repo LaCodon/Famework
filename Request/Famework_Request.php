@@ -3,6 +3,10 @@
 namespace Famework\Request;
 
 class Famework_Request {
+    
+    const CODE_FOUND = 302;
+    const CODE_MOVEDPERMANENTLY = 301;
+    const CODE_TEMPORARYREDIRECT = 307;
 
     protected $_params;
 
@@ -25,7 +29,7 @@ class Famework_Request {
      * @param string $url Where to redirect to
      * @param int $code HTTP Statuscode
      */
-    public static function redirect($url, $code = 302) {
+    public static function redirect($url, $code = self::CODE_FOUND) {
         header('Location: ' . $url, TRUE, $code);
         exit();
     }
