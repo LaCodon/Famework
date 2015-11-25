@@ -72,6 +72,14 @@ class Famework_View {
     }
 
     /**
+     * Add JS to view
+     * @param string $js URL to JS file
+     */
+    public function addJS($js) {
+        $this->__frame->addHeadElement('<script src="' . $js . '"></script>');
+    }
+
+    /**
      * Add a meta tag to the html head
      * @param string $name
      * @param string $content

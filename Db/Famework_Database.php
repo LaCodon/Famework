@@ -11,11 +11,14 @@ class Famework_Database {
         if ($dsn === NULL) {
             return NULL;
         }
-        
+
         $dbuser = $config->getValue('database', 'db_user');
         $dbpass = $config->getValue('database', 'db_pass');
+        $options = array(
+            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+        );
 
-        return new \PDO($dsn, $dbuser, $dbpass);
+        return new \PDO($dsn, $dbuser, $dbpass, $options);
     }
 
     /**
