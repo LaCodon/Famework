@@ -201,6 +201,11 @@ class Famework {
         $this->_action = $action . 'Action';
     }
 
+    public function truncateRequest() {
+        $this->_controller = NULL;
+        $this->_action = NULL;
+    }
+
     /**
      * Call this to load the controller, action and view.
      * Call Famework::handleRequest() <b>before</b>!
