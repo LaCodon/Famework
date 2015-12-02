@@ -57,7 +57,7 @@ class Paramhandler {
     }
 
     public function getInt($name, $require = TRUE, $min = NULL, $max = NULL) {
-        $value = $this->getValue($name, $required);
+        $value = $this->getValue($name, $require);
 
         if (intval($value) != $value) {
             throw new Exception_Param('The value of the param "' . $name . '" has the wrong format.');
@@ -65,13 +65,23 @@ class Paramhandler {
 
         $value = intval($value);
 
-        if (is_int($min) && $value < $min) {
-            throw new Exception_Param('The value of the param "' . $name . '" is too small.');
+        try {
+            if (is_int($min) && $value < $min) {
+                throw new Exception_Param('The value of the param "' . $name . '" is too small.');
+            }
+
+            if (is_int($max) && $value > $max) {
+                throw new Exception_Param('The value of the param "' . $name . '" is too big.');
+            }
+        } catch (Exception_Param $e) {
+            if ($require === TRUE) {
+                throw $e;
+            } else {
+                return NULL;
+            }
         }
 
-        if (is_int($max) && $value > $max) {
-            throw new Exception_Param('The value of the param "' . $name . '" is too big.');
-        }
+        return $value;
     }
 
     private function searchValue($key) {

@@ -38,6 +38,7 @@ class Famework_Handler {
         echo '<tr><td>Exception</td><td>&nbsp;&nbsp;&nbsp;&nbsp;Message</td></tr>';
         printf('<tr><td>%s:%d</td><td>&nbsp;&nbsp;&nbsp;&nbsp;%s</td></tr>', $exception->getFile(), $exception->getLine(), $exception->getMessage());
         echo '</table>';
+        header('Internal Server Error', TRUE, 500);
         die();
 
         return TRUE;
