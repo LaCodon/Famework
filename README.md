@@ -22,8 +22,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
             |- index.php
     ```
 3. Paste the following in your /.htaccess file  ("/" is the root of your project folder)
-    ```htaccess
-    
+    ```
     <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
