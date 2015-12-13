@@ -7,6 +7,7 @@ Famework is a simple to use PHP Framwork to easily create splendid but lightweig
 In order to make Famework ready to use, you have to do the following easy steps:
 1. Download the latest version of Famework from https://github.com/LaCodon/Famework (choose the latest tag version) and unzip the folder in any folder on your webserver.
 2. Create your own project in a seperate folder an make sure it has at least the following folder structure:
+
     ```
     
     ⎮- index.php
