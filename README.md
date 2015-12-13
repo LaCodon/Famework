@@ -22,7 +22,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
 
     ```
 3. Paste the following in your /index.php ("/" is the root of your project folder)
-    ```
+    ```php
     <?php
 
     use Famework\Famework;
@@ -81,7 +81,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     famework_action = :action
     ```
 6. Paste the following in /controller/IndexController.php
-    ```
+    ```php
     <?php
 
     use Famework\Controller\Famework_Controller;
