@@ -57,7 +57,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     $famwork->loadController();
     ```
 4. Paste the following in your /config/config.ini file
-    ```
+    ```ini
     [famework]
     ; make sure you use the correct PHP const names
     public_root = HTTP_ROOT
@@ -72,7 +72,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     ;db_pass = userPassword
     ```
 5. Paste the following in your /config/routes.ini file
-    ```
+    ```ini
     [default]
     ; "{root}" means HTTP_ROOT
     ; e.g.: http://www.example.com/index/index calls IndexController::indexAction() and /view/index/index.php
