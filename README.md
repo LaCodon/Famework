@@ -73,6 +73,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     ```
 5. Paste the following in your /config/routes.ini file
     ```ini
+    
     [default]
     ; "{root}" means HTTP_ROOT
     ; e.g.: http://www.example.com/index/index calls IndexController::indexAction() and /view/index/index.php
