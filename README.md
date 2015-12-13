@@ -8,6 +8,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
 1. Download the latest version of Famework from https://github.com/LaCodon/Famework (choose the latest tag version) and unzip the folder in any folder on your webserver.
 2. Create your own project in a seperate folder an make sure it has at least the following folder structure:
     ```
+    
     ⎮- index.php
     ⎮- config/
         ⎮- config.ini
@@ -20,6 +21,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     ```
 3. Paste the following in your /index.php ("/" is the root of your project folder)
     ```
+    
     <?php
 
     use Famework\Famework;
@@ -55,6 +57,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     ```
 4. Paste the following in your /config/config.ini file
     ```
+    
     [famework]
     ; make sure you use the correct PHP const names
     public_root = HTTP_ROOT
@@ -70,6 +73,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     ```
 5. Paste the following in your /config/routes.ini file
     ```
+    
     [default]
     ; "{root}" means HTTP_ROOT
     ; e.g.: http://www.example.com/index/index calls IndexController::indexAction() and /view/index/index.php
@@ -79,6 +83,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     ```
 6. Paste the following in /controller/IndexController.php
     ```
+    
     <?php
 
     use Famework\Controller\Famework_Controller;
