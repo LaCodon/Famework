@@ -10,19 +10,29 @@ In order to make Famework ready to use, you have to do the following easy steps:
 2. Create your own project in a seperate folder an make sure it has at least the following folder structure:
 
     ```
-    
-    ⎮- index.php
-    ⎮- config/
-        ⎮- config.ini
-        ⎮- routes.ini
-    ⎮- controller/
-        ⎮- IndexController.php
-    ⎮- view/
-        ⎮- index/
-            ⎮- index.php
-
+    |- index.php
+    |- .htaccess
+    |- config/
+        |- config.ini
+        |- routes.ini
+    |- controller/
+        |- IndexController.php
+    |- view/
+        |- index/
+            |- index.php
     ```
-3. Paste the following in your /index.php ("/" is the root of your project folder)
+3. Paste the following in your /.htaccess file  ("/" is the root of your project folder)
+    ```htaccess
+    <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+    </IfModule>
+    ```
+4. Paste the following in your /index.php
     ```php
     <?php
 
@@ -57,7 +67,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     $famwork->handleRequest();
     $famwork->loadController();
     ```
-4. Paste the following in your /config/config.ini file
+5. Paste the following in your /config/config.ini file
     ```ini
     [famework]
     ; make sure you use the correct PHP const names
@@ -72,7 +82,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     ;db_user = dbUser
     ;db_pass = userPassword
     ```
-5. Paste the following in your /config/routes.ini file
+6. Paste the following in your /config/routes.ini file
     ```ini
     
     [default]
@@ -82,7 +92,7 @@ In order to make Famework ready to use, you have to do the following easy steps:
     famework_controller = :controller
     famework_action = :action
     ```
-6. Paste the following in /controller/IndexController.php
+7. Paste the following in /controller/IndexController.php
     ```php
     <?php
 
