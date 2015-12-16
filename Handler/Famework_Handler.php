@@ -4,7 +4,7 @@ namespace Famework\Handler;
 
 class Famework_Handler {
 
-    public static function registerDeafaultHandler() {
+    public static function registerDefaultHandler() {
         set_error_handler(array(new Famework_Handler(), 'onError'));
         set_exception_handler(array(new Famework_Handler(), 'onException'));
     }
