@@ -265,8 +265,8 @@ class Famework {
     /**
      * register the default error- and exceptionhandler for developers
      */
-    public static function registerDeafaultHandler() {
-        Famework_Handler::registerDeafaultHandler();
+    public static function registerDefaultHandler() {
+        Famework_Handler::registerDefaultHandler();
     }
 
     /**
