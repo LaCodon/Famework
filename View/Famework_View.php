@@ -87,6 +87,14 @@ class Famework_View {
     public function addMeta($name, $content) {
         $this->_metas[$name] = '<meta name="' . $name . '" content="' . $content . '">';
     }
+    
+    /**
+     * Add an HTML tag to the HTML head section
+     * @param string $elementHtml The HTML code for the element, e.g. <code>&lt;link rel="shortcut icon" href="favicon.ico"&gt;</code>
+     */
+    public function addHeadElement($elementHtml) {
+        $this->__frame->addHeadElement($elementHtml);
+    }
 
     /**
      * Turn the automatic layout (html frame) off

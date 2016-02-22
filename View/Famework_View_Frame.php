@@ -10,35 +10,35 @@ class Famework_View_Frame {
     public $_description = '';
 
     public function theDoctype() {
-        echo '<!DOCTYPE html>';
+        echo '<!DOCTYPE html>' . PHP_EOL;
     }
 
     public function theHeader() {
-        echo '<html>'
-        . '<head>'
-        . '<title>' . $this->_title . '</title>'
-        . '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'
-        . '<meta name="description" content="' . $this->_description . '">'
-        . '<meta name="viewport" content="width=device-width, initial-scale=1">';
+        echo '<html>' . PHP_EOL
+        . '<head>' . PHP_EOL
+        . '<title>' . $this->_title . '</title>' . PHP_EOL
+        . '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">' . PHP_EOL
+        . '<meta name="description" content="' . $this->_description . '">' . PHP_EOL
+        . '<meta name="viewport" content="width=device-width, initial-scale=1">' . PHP_EOL;
 
         foreach ($this->_headelements as $element) {
-            echo $element;
+            echo $element . PHP_EOL;
         }
 
         if (count($this->_css) > 0) {
-            echo '<style>';
+            echo '<style>' . PHP_EOL;
             foreach ($this->_css as $css) {
-                echo $css;
+                echo $css . PHP_EOL;
             }
-            echo '</style>';
+            echo '</style>' . PHP_EOL;
         }
 
-        echo '</head>'
-        . '<body>';
+        echo '</head>' . PHP_EOL
+        . '<body>' . PHP_EOL;
     }
 
     public function theFooter() {
-        echo '</body>'
+        echo '</body>' . PHP_EOL
         . '</html>';
     }
 
