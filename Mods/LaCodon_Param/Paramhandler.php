@@ -43,6 +43,8 @@ class Paramhandler {
 
         if ($required === TRUE && $value === NULL) {
             throw new Exception_Param('The param "' . $name . '" has to be set.');
+        } elseif ($value === NULL) {
+            return NULL;
         }
 
         if (is_int($min) && strlen($value) < $min) {
