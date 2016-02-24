@@ -41,9 +41,9 @@ class Paramhandler {
     public function getValue($name, $required = TRUE, $min = NULL, $max = NULL) {
         $value = $this->searchValue($name);
 
-        if ($required === TRUE && $value === NULL) {
+        if ($required === TRUE && ($value === NULL || $value === '')) {
             throw new Exception_Param('The param "' . $name . '" has to be set.');
-        } elseif ($value === NULL) {
+        } elseif ($required === FALSE && ($value === NULL || $value === '')) {
             return NULL;
         }
 
