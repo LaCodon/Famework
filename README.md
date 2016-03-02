@@ -117,5 +117,4 @@ In order to make Famework ready to use, you have to do the following easy steps:
     ```
     
     
-## More
-More is comming soon, keep experimenting!
+
