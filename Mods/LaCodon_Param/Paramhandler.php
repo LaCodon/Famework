@@ -61,7 +61,7 @@ class Paramhandler {
     public function getInt($name, $require = TRUE, $min = NULL, $max = NULL) {
         $value = $this->getValue($name, $require);
 
-        if (intval($value) != $value) {
+        if (ctype_digit(strval($value)) === FALSE) {
             throw new Exception_Param('The value of the param "' . $name . '" has the wrong format.');
         }
 
