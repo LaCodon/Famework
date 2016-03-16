@@ -72,6 +72,14 @@ class Famework_View {
     }
 
     /**
+     * Set the html lang attribute
+     * @param string $lang
+     */
+    public function setLang($lang) {
+        $this->__frame->_lang = $lang;
+    }
+
+    /**
      * Add JS to view
      * @param string $js URL to JS file
      */
@@ -87,7 +95,7 @@ class Famework_View {
     public function addMeta($name, $content) {
         $this->_metas[$name] = '<meta name="' . $name . '" content="' . $content . '">';
     }
-    
+
     /**
      * Add an HTML tag to the HTML head section
      * @param string $elementHtml The HTML code for the element, e.g. <code>&lt;link rel="shortcut icon" href="favicon.ico"&gt;</code>

@@ -8,13 +8,14 @@ class Famework_View_Frame {
     protected $_headelements = array();
     public $_title = 'A Famework website';
     public $_description = '';
+    public $_lang = '';
 
     public function theDoctype() {
         echo '<!DOCTYPE html>' . PHP_EOL;
     }
 
     public function theHeader() {
-        echo '<html>' . PHP_EOL
+        echo '<html' . ($this->_lang === '' ? '' : ' lang="' . $this->_lang . '"') . '>' . PHP_EOL
         . '<head>' . PHP_EOL
         . '<title>' . $this->_title . '</title>' . PHP_EOL
         . '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">' . PHP_EOL
