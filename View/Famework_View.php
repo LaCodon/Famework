@@ -33,7 +33,7 @@ class Famework_View {
 
         $path = \Famework\combinePath(array($viewpath, $controller, $action . '.php'));
 
-        if (is_readable($path)) {
+        if (is_readable($path) && $this->_ignoreview === FALSE) {
             if ($this->_layoutoff === FALSE) {
                 foreach ($this->_metas as $meta) {
                     $this->__frame->addHeadElement($meta);
