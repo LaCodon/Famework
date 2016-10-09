@@ -15,6 +15,7 @@ class Famework_View {
     protected $_request;
     protected $_controller;
     protected $_action;
+    protected $_ignoreview = FALSE;
 
     /**
      * @var \Famework\View\Famework_View_Frame_Controller 
@@ -52,7 +53,9 @@ class Famework_View {
                 require $path;
             }
         } else {
-            throw new Famework_Exception_Missing_View($action);
+            if ($this->_ignoreview !== TRUE) {
+                throw new Famework_Exception_Missing_View($action);
+            }
         }
     }
 
@@ -109,6 +112,13 @@ class Famework_View {
      */
     public function turnLayoutOff() {
         $this->_layoutoff = TRUE;
+    }
+
+    /**
+     * Don't call the view script
+     */
+    public function ignoreView() {
+        $this->_ignoreview = TRUE;
     }
 
     /**
