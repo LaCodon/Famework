@@ -238,8 +238,10 @@ class Famework {
         }
 
         // run action
-        $action = $this->_action;
-        $ctrlClass->$action();
+        try {
+            $action = $this->_action;
+            $ctrlClass->$action();
+        } catch (\Exception $e) { }
 
         // render view
         $pageview->render($this->_view_path);
