@@ -42,9 +42,12 @@ famework_action = :action
      */
     public function testHandle($path, $contExp, $actExp, $paramExp = -1) {
         $this->_famework->handleRequest($path);
-        $this->assertEquals($contExp, $this->_famework->getController());
-        $this->assertEquals($actExp, $this->_famework->getAction());
-        if ($paramExp !== -1) {
+        if ($paramExp === -1) {
+            $this->assertEquals($contExp, $this->_famework->getController());
+            $this->assertEquals($actExp, $this->_famework->getAction());
+        } else {
+            $this->assertEquals(NULL, $this->_famework->getController());
+            $this->assertEquals(NULL, $this->_famework->getAction());
             $this->assertEquals($paramExp, $this->_famework->getRequestParam('param'));
         }
 
