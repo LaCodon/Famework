@@ -23,15 +23,15 @@ class FameworkTest extends PHPUnit_Framework_TestCase {
     protected function setUp() {
         $this->_config = new Famework_Config('');
         $this->_routes = new Famework_Config('
+[withparam]
+famework_route = {root}/:controller/testwp/:param
+famework_controller = :controller
+famework_action = testwp            
+
 [default]
 famework_route = {root}/:controller/:action
 famework_controller = :controller
 famework_action = :action
-
-[withparam]
-famework_route = {root}/:controller/testwp/:param
-famework_controller = :controller
-famework_action = testwp
 
 ');
         $this->_famework = new Famework($this->_config, $this->_routes);
@@ -62,10 +62,10 @@ famework_action = testwp
             array('/test/test/', 'TestController', 'testAction'),
             array('/test/test.do', 'TestController', 'testdoAction'),
             array('/test/test.do/', 'TestController', 'testdoAction'),
-            array('/test/testwp', 'TestController', 'testdoAction', NULL),
-            array('/test/testwp/', 'TestController', 'testdoAction', NULL),
-            array('/test/testwp/parameter', 'TestController', 'testdoAction', 'parameter'),
-            array('/test/testwp/path/in/param', 'TestController', 'testdoAction', 'path/in/param'),
+            array('/test/testwp', 'TestController', 'testwpAction', NULL),
+            array('/test/testwp/', 'TestController', 'testwpAction', NULL),
+            array('/test/testwp/parameter', 'TestController', 'testwpAction', 'parameter'),
+            array('/test/testwp/path/in/param', 'TestController', 'testwpAction', 'path/in/param'),
             array('/test/test/addfolder', NULL, NULL),
             array('/test/', NULL, NULL),
             array('/test', NULL, NULL),
