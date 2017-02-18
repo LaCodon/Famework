@@ -99,7 +99,7 @@ class Famework {
      * Call this to handle a request.
      * Then call Famework::loadController();
      */
-    public function handleRequest($path = NULL) {
+    public function handleRequest($path = NULL, $allowSlashInParam = FALSE) {
         $result = array();
 
         if ($path === NULL) {
@@ -151,7 +151,7 @@ class Famework {
                     // add params
                     $this->_params = array();
                     foreach ($params[1] as $param) {
-                        if (strpos($matches[$param], '/') !== FALSE) {
+                        if (strpos($matches[$param], '/') !== FALSE && !$allowSlashInParam) {
                             // something went wrong because param is URI fragment
                             unset($result['controller']);
                             unset($result['action']);
