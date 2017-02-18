@@ -45,6 +45,10 @@ famework_action = :action
         if ($paramExp === -1) {
             $this->assertEquals($contExp, $this->_famework->getController());
             $this->assertEquals($actExp, $this->_famework->getAction());
+        } elseif ($paramExp === NULL) {
+            $this->assertEquals($contExp, $this->_famework->getController());
+            $this->assertEquals($actExp, $this->_famework->getAction());
+            $this->assertEquals($paramExp, $this->_famework->getRequestParam('param'));
         } else {
             $this->assertEquals(NULL, $this->_famework->getController());
             $this->assertEquals(NULL, $this->_famework->getAction());
