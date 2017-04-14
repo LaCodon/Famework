@@ -32,7 +32,7 @@ class Famework_Handler {
     /**
      * Exception handler
      */
-    public function onException(\Exception $exception) {
+    public function onException($exception) {
         if (error_reporting() === (E_ALL | E_STRICT) || error_reporting() === (E_ALL)) {
             echo '<h1 style="color: red;">Exception!</h1>';
             echo '<table>';
