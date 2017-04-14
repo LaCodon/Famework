@@ -35,6 +35,7 @@ class Famework {
      * @var \Famework\Request\Famework_Request
      */
     private $_request;
+    private $_ctrl_namespace = '';
 
     /**
      * load the config.ini and routes.ini (or the ini strings)
@@ -206,6 +207,18 @@ class Famework {
         $this->_action = NULL;
     }
 
+    public function setControllerNamespace($namespace) {
+        // add prefix slashes
+        if (strpos($namespace, '\\') !== 0) {
+            $namespace = '\\' . $namespace;
+        }
+        // add suffix slashes
+        if (strpos($namespace, '\\') !== strlen($namespace) - 1) {
+            $namespace .= '\\';
+        }
+        $this->_ctrl_namespace = $namespace;
+    }
+
     /**
      * Call this to load the controller, action and view.
      * Call Famework::handleRequest() <b>before</b>!
@@ -216,9 +229,12 @@ class Famework {
             $this->_action = 'notfoundAction';
             header('HTTP/1.0 404 Not Found');
         }
+        
+        // compose controller
+        $controller = $this->_ctrl_namespace . $this->_controller;
 
         // we need the default 404 error page, because developer provides none
-        if (!class_exists($this->_controller, TRUE) || !in_array('Famework\Controller\Famework_Controller', class_parents($this->_controller))) {
+        if (!class_exists($controller, TRUE) || !in_array('Famework\Controller\Famework_Controller', class_parents($controller))) {
             $this->default404($nooutput);
         }
 
@@ -231,7 +247,7 @@ class Famework {
         Famework_Registry::setView($pageview);
 
         // get controller
-        $ctrlClass = new $this->_controller($pageview);
+        $ctrlClass = new $controller($pageview);
 
         if (!method_exists($ctrlClass, $this->_action)) {
             $this->default404($nooutput);
