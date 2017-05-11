@@ -2,7 +2,13 @@
 
 use Famework\Registry\Famework_Registry;
 
-class RegistryTest extends PHPUnit_Framework_TestCase {
+// backward compatibility
+if (!class_exists('\PHPUnit\Framework\TestCase') &&
+    class_exists('\PHPUnit_Framework_TestCase')) {
+    class_alias('\PHPUnit_Framework_TestCase', '\PHPUnit\Framework\TestCase');
+}
+
+class RegistryTest extends \PHPUnit_Framework_TestCase {
 
     public function setUp() {
         Famework_Registry::set('foo', 'bar');
