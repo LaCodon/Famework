@@ -8,7 +8,7 @@ if (!class_exists('\PHPUnit\Framework\TestCase') &&
     class_alias('\PHPUnit_Framework_TestCase', '\PHPUnit\Framework\TestCase');
 }
 
-class RegistryTest extends \PHPUnit_Framework_TestCase {
+class RegistryTest extends \PHPUnit\Framework\TestCase {
 
     public function setUp() {
         Famework_Registry::set('foo', 'bar');

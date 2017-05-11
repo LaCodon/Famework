@@ -9,7 +9,7 @@ if (!class_exists('\PHPUnit\Framework\TestCase') &&
     class_alias('\PHPUnit_Framework_TestCase', '\PHPUnit\Framework\TestCase');
 }
 
-class FameworkTest extends \PHPUnit_Framework_TestCase {
+class FameworkTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * @var Famework_Config
