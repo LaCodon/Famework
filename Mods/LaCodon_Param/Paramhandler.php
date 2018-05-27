@@ -47,11 +47,11 @@ class Paramhandler {
             return NULL;
         }
 
-        if (is_int($min) && strlen(utf8_decode($value)) < $min) {
+            if (is_int($min) && strlen(mb_convert_encoding($value, 'UTF-8')) < $min) {
             throw new Exception_Param('The value of the param "' . $name . '" is too short.');
         }
 
-        if (is_int($max) && strlen(utf8_decode($value)) > $max) {
+        if (is_int($max) && strlen(mb_convert_encoding($value, 'UTF-8')) > $max) {
             throw new Exception_Param('The value of the param "' . $name . '" is too long.');
         }
 
